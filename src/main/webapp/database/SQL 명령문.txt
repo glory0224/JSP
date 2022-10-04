@@ -1,0 +1,149 @@
+C:\Users\user>sqlplus
+
+Enter user-name: system
+Enter password: oracle
+
+SQL> CREATE USER oracle IDENTIFIED BY oracle;
+User created.
+
+SQL> GRANT DBA TO oracle;
+Grant succeeded.
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+C:\Users\user>sqlplus
+
+Enter user-name: oracle
+Enter password: oracle
+
+
+# 테이블 생성 #
+테이블? 표, 행열, 테이블은 데이터를 묶어주는 단위
+
+CREATE TABLE test(
+id varchar2(10),
+pw varchar2(15),
+name varchar2(15)
+);
+
+SQL> CREATE TABLE test(
+  2  id varchar2(10),
+  3  pw varchar2(15),
+  4  name varchar2(15)
+  5  );
+
+Table created.
+
+# 데이터베이스 안에 테이블 목록 확인 #
+SQL> SELECT * FROM tab;
+
+TNAME                                                        TABTYPE         CLUSTERID
+------------------------------------------------------------ -------------- ----------
+TEST                                                         TABLE
+
+# 테이블 구조 확인 #
+SQL> DESC test;
+ Name Type
+---------------------------------
+ ID  VARCHAR2(10)
+ PW VARCHAR2(15)
+ NAME VARCHAR2(15)
+
+# 테이블 삭제 #
+SQL> DROP TABLE test;
+Table dropped.
+
+SQL> SELECT * FROM tab;
+no rows selected
+
+# 테이블에 데이터 입력 #
+SQL> INSERT INTO test VALUES('admin', '1234', '김변수');
+1 row created.
+
+SQL> SELECT * FROM test;
+
+ID                   PW                             NAME
+-------------------- ------------------------------ ------------------------------
+admin                1234                           김변수
+user1                1111
+user1                1111                           유저일
+user1                1111                           유저일
+
+SQL> SELECT id FROM test;
+
+ID
+--------------------
+admin
+user1
+user1
+user1
+
+SQL> SELECT id, pw FROM test WHERE id='김변수';
+SQL> SELECT id, pw FROM test WHERE id='admin';
+
+ID                   PW
+-------------------- ------------------------------
+admin                1234
+
+SQL> SELECT id, pw FROM test WHERE id='admin1';
+no rows selected
+
+SQL> DELETE FROM test WHERE id='user1';
+3 rows deleted.
+
+SQL> SELECT * FROM test;
+
+ID                   PW                             NAME
+-------------------- ------------------------------ ------------------------------
+admin                1234                           김변수
+
+
+SQL> UPDATE test SET pw='admin' WHERE id='admin';
+1 row updated.
+
+SQL> SELECT * FROM test;
+
+ID                   PW                             NAME
+-------------------- ------------------------------ ------------------------------
+admin                admin                          김변수
+
+SQL> INSERT INTO test VALUES('uesr1','1111', '이상수');
+
+1 row created.
+
+SQL> INSERT INTO test VALUES('uesr2','2222', '박참조');
+
+1 row created.
+
+SQL> SELECT * FROM test;
+
+ID                   PW                             NAME
+-------------------- ------------------------------ ------------------------------
+admin                admin                          김변수
+uesr1                1111                           이상수
+uesr2                2222                           박참조
+
+SQL> UPDATE test SET pw='1234', name='홍길동';
+
+3 rows updated.
+
+SQL> SELECT * FROM test;
+
+ID                   PW                             NAME
+-------------------- ------------------------------ ------------------------------
+admin                1234                           홍길동
+uesr1                1234                           홍길동
+uesr2                1234                           홍길동
+
+SQL> DELETE FROM test;
+
+3 rows deleted.
+
+SQL> SELECT * FROM test;
+
+no rows selected
+
+
+
+
