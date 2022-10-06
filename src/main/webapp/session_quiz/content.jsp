@@ -45,7 +45,7 @@
 		<tr>
 			<th>작성일</th> <td><%=board.getWriteTime() %></td>
 			<th>다운로드</th> 
-			
+			<!-- 파일 다운로드를 위한 식별자를 넘겨준다. -->
 			<td onclick="location.href='fileDown.jsp?fileName=<%=board.getFileName()%>&writeId=<%=board.getId()%>'">
 			<%=board.getFileName()%>
 			</td>
@@ -62,8 +62,9 @@
 				<button type="button"  onclick="location.href='boardForm.jsp'">목록</button>
 				<!-- 사용자의 id로 게시글을 들어갈 때만 보이게 if문 설정 -->
 				<%if(board.getId().equals(session.getAttribute("id"))) {%>
-				<button type="button"  onclick="location.href='boardModify.jsp'">수정</button>
-				<button type="button"  onclick="location.href='boardDelete.jsp'">삭제</button>
+				<!-- 게시글 수정 식별자로 게시글 번호인 num을 넘겨준다.  -->
+				<button type="button"  onclick="location.href='boardModify.jsp?num=<%=board.getNum()%>'">수정</button>
+				<button type="button"  onclick="location.href='boardDelete.jsp?num=<%=board.getNum()%>'">삭제</button>
 			<%} %>
 			
 			</td>

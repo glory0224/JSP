@@ -151,6 +151,34 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// 게시글 수정 
+	public void modify(int num, String title, String content) {
+		String sql = "UPDATE session_quiz_board SET title=?, content=? WHERE num=?";
+		PreparedStatement ps = null;
+	
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, title);
+			ps.setString(2, content);
+			ps.setInt(3, num);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(int num) {
+		String sql = "DELETE FROM session_quiz_board WHERE num=?";
+		PreparedStatement ps = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 
