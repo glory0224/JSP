@@ -28,8 +28,9 @@
 </head>
 <body>	
 <div align="center">
-	<form name="f" action="jspMember/member_edit_ok.jsp" 
+	<form name="f" action="member_edit_ok.jsp" 
 								method="post" onsubmit="return check()">
+		<input type="hidden" name="no" value="<%=dto.getNo() %>">
 		<table width="80%" class="outline">
 			<tr>
 				<td colspan="2" align=center class="m2">회원수정</td>

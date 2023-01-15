@@ -56,7 +56,7 @@
 			<td><%=dto.getAllHp()%></td>
 			<td><%=dto.getJoindate()%></td>
 			<td>
-			<a href="jspMember/member_edit.jsp?no=<%=dto.getNo()%>"></a>수정 | 
+			<a href="member_edit.jsp?no=<%=dto.getNo()%>">수정</a> | 
 			<a href="member_delete.jsp?no=<%=dto.getNo()%>">삭제</a></td>
 		</tr>	
 <%		} 

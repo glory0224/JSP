@@ -135,6 +135,41 @@ public class MemberDAO {
 		}
 	}
 	
+	public MemberDTO getMember(String id) throws SQLException {
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			String sql = "select * from member where id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			List<MemberDTO> list = makeList(rs);
+			return list.get(0);
+		}finally {
+			if (rs != null) rs.close();
+			if (ps != null) ps.close();
+			if (con != null) con.close();
+		}
+	}
+	
+	public MemberDTO getMember(String id, String passwd) throws SQLException {
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			String sql = "select * from member where id = ? and passwd = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setNString(2, passwd);
+			rs = ps.executeQuery();
+			List<MemberDTO> list = makeList(rs);
+			return list.get(0);
+		}finally {
+			if (rs != null) rs.close();
+			if (ps != null) ps.close();
+			if (con != null) con.close();
+		}
+	}
+	
+	
+	
 	public int updateMember(MemberDTO dto) throws SQLException {
 		try {
 			con = DriverManager.getConnection(url, user, pass);
