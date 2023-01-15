@@ -35,6 +35,11 @@ public class MemoDAO {
 			ps.setString(2, dto.getEmail());
 			ps.setString(3, dto.getMemo());		
 			ps.executeUpdate();
+		}catch(SQLException e) {
+			// jsp는 예외 처리를 자동으로 해주지만 servlet은 그런 기능이 없어서 따로 여기서 잡아준다.
+		System.out.println("insert중 오류 발생 ");
+		e.printStackTrace();
+		
 		}finally {
 			if (ps != null) ps.close();
 			if (con != null) con.close();
