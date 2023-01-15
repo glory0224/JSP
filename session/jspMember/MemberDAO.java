@@ -3,6 +3,7 @@ package jspMember;
 import java.sql.*;
 import java.util.*;
 
+//db 연결
 public class MemberDAO {
 	Connection con;
 	PreparedStatement ps;
