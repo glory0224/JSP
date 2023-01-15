@@ -47,7 +47,7 @@
 			<td colspan="7">등록된 회원이 없습니다.</td>
 		</tr>
 <%	}else { 
-			for(MemberDTO dto : list){%>
+			//for(MemberDTO dto : list){%>
 		<tr>
 			<td><%=dto.getNo()%></td>
 			<td><%=dto.getName()%></td>
@@ -60,7 +60,7 @@
 			<a href="member_delete.jsp?no=<%=dto.getNo()%>">삭제</a></td>
 		</tr>	
 <%		} 
-		}%>		
+		//}%>		
 	</table>
 </div>
 <%@ include file="../bottom.jsp"%>
