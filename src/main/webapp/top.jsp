@@ -12,9 +12,9 @@
 </head>
 <body>
 <%
-	MemberDTO dto = (MemberDTO) session.getAttribute("member");
+	MemberDTO mdto = (MemberDTO) session.getAttribute("member");
 	boolean isLogin = false;
-	if (dto != null){
+	if (mdto != null){
 		isLogin = true;
 	}
 %>
